@@ -1,3 +1,4 @@
 from django.db import models
 
-# Create your models here.
+class camioneta_1(models.Model):
+    rulo = models.FloatField()
