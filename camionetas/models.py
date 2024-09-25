@@ -6,5 +6,5 @@ class Objetos_Camionetas (models.Model):
     cantidad = models.FloatField()
 
 class Camionetas (models.Model):
-    name = models.CharField(max_length = 15)
+    name = models.CharField(max_length = 15, unique=True)
     
