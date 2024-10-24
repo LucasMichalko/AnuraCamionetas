@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'templates/styles.css' %}">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
+{% extends "index.html" %}
+
+{% block index %}
         {% for Listar_camionetas in Listar_camionetas %}
                 {{Listar_camionetas.name}}
         {% endfor %}
-    </header>
-  </body>
-</html>
+{% endblock %}
