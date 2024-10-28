@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+
+{% block index %}
+    <form action='' method="POST">
+        {% csrf_token %}
+        <p>Nombre: <input type="text" name="name"></p>
+         
+         <input type="submit" value="Crear Camioneta">
+    </form>
+{% endblock %}
