@@ -42,13 +42,18 @@ def Create_Objects (request):
         return render(request, "Alta_Productos.html", context=context)
 
     elif request.method == 'POST':
+        listar_stock = Objetos_Camionetas.objects.all()
+        listar_camionetas = Camionetas.objects.all()
         
-        Listar_Stock = Objetos_Camionetas.objects.all
-        Listar_camionetas = Camionetas.objects.all
+        name = request.POST.get('name')
+        for camioneta in listar_camionetas:
+                # Aquí usamos el ID de cada camioneta
+            Objetos_Camionetas.objects.create(
+                name=name,
+                camioneta_ID_Producto=Camionetas.id_Camionetas  # O camioneta, si es un ForeignKey
+            )
+
         context = {
-        "Listar_Stock":Listar_Stock,
-        "Listar_camionetas":Listar_camionetas
+            "listar_stock": listar_stock,
         }
-        Objetos_Camionetas.objects.create(name = request.POST['name'], camioneta_ID_Producto =)
-    
-    return render (request, "Alta_Productos.html", context=context)
+        return render(request, "Alta_Productos.html", context=context)
