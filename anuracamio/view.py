@@ -50,10 +50,11 @@ def Create_Objects (request):
                 # Aquí usamos el ID de cada camioneta
             Objetos_Camionetas.objects.create(
                 name=name,
-                camioneta_ID_Producto=Camionetas.id_Camionetas  # O camioneta, si es un ForeignKey
+                camioneta_ID_Producto = camioneta.id_Camionetas  # O camioneta, si es un ForeignKey
             )
 
         context = {
             "listar_stock": listar_stock,
+            "listar_stock": listar_stock
         }
         return render(request, "Alta_Productos.html", context=context)
