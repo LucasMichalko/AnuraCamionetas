@@ -1,21 +1,22 @@
 {% extends "index.html" %}
 
 {% block index %}
+
     <form action='' method="POST">
         {% csrf_token %}
         <p>Nombre: <input type="text" name="name"></p>
          
          <input type="submit" value="Crear Camioneta">
     </form>
-    {% for listar_stock in listar_stock %}
+   {% for Listar_stock in Listar_stock %}
                 <div class="card" style="width: 18rem; margin-left: 30px; margin-top:10px">
                     <div class="card-body">
-                      <h3 class="card-title">{{listar_stock.name}}</h3>
-                      <h3 class="card-title">{{listar_stock.camioneta_ID_Producto}}</h3>
+                      <h3 class="card-title">{{Listar_stock.name}}</h3>
+                      <h3 class="card-title">{{Listar_stock.camioneta_ID_Producto}}</h3>
                       <a href="#" class="btn btn-primary">Borrar</a>
                       <a href="#" class="btn btn-primary">Modificar</a>
                     </div>
                   </div>
                
-        {% endfor %}
+  {% endfor %}
 {% endblock %}

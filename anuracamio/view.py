@@ -35,26 +35,28 @@ def ABM_Camionetas(request):
 
 def Create_Objects (request):
     if request.method == 'GET':
-        Listar_Stock = Objetos_Camionetas.objects.all
+        Listar_stock = Objetos_Camionetas.objects.all()
+        Listar_camionetas = Camionetas.objects.all()
         context = {
-        "Listar_Stock":Listar_Stock,
+            "Listar_stock": Listar_stock,
+            "Listar_camionetas":Listar_camionetas,
         }
         return render(request, "Alta_Productos.html", context=context)
 
     elif request.method == 'POST':
-        listar_stock = Objetos_Camionetas.objects.all()
-        listar_camionetas = Camionetas.objects.all()
+        Listar_stock = Objetos_Camionetas.objects.all()
+        Listar_camionetas = Camionetas.objects.all()
         
         name = request.POST.get('name')
-        for camioneta in listar_camionetas:
-                # Aquí usamos el ID de cada camioneta
+        for camioneta in Listar_camionetas:
+               
             Objetos_Camionetas.objects.create(
                 name=name,
-                camioneta_ID_Producto = camioneta.id_Camionetas  # O camioneta, si es un ForeignKey
-            )
+                camioneta_ID_Producto = camioneta.id_Camionetas
+            )  
 
         context = {
-            "listar_stock": listar_stock,
-            "listar_stock": listar_stock
+            "Listar_stock": Listar_stock,
+            "Listar_camionetas":Listar_camionetas,
         }
         return render(request, "Alta_Productos.html", context=context)
