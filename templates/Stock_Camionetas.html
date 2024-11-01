@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block index %}
+{% for Listar_stock in Listar_stock %}
+                {% if Listar_stock.camioneta_ID_Producto == ID_camio %}
+                <div class="card" style="width: 18rem; margin-left: 30px; margin-top:10px">
+                    <div class="card-body">
+                      <h3 class="card-title">{{Listar_stock.name}}</h3>
+                      <h3 class="card-title">{{Listar_stock.camioneta_ID_Producto}}</h3>
+                      <a href="#" class="btn btn-primary">Borrar</a>
+                      <a href="#" class="btn btn-primary">Modificar</a>
+                    </div>
+                  </div>
+               {% endif %}
+  {% endfor %}
+{% endblock %}

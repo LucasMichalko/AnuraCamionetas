@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from anuracamio.view import index, Create_camionetas, ABM_Camionetas, Create_Objects
+from anuracamio.view import index, Create_camionetas, ABM_Camionetas, Create_Objects, Stock_Camionetas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     path("Create_camionetas/", Create_camionetas),
     path("ABM_camionetas/", ABM_Camionetas),
     path("ABM_Productos/", Create_Objects),
+    path("Stock_Camionetas/<ID_camio>", Stock_Camionetas)
 ]

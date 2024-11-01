@@ -60,3 +60,12 @@ def Create_Objects (request):
             "Listar_camionetas":Listar_camionetas,
         }
         return render(request, "Alta_Productos.html", context=context)
+    
+def Stock_Camionetas(request,ID_camio):
+    Listar_camionetas = Camionetas.objects.all
+    Listar_stock = Objetos_Camionetas.objects.all()
+    context = {
+        "Listar_camionetas":Listar_camionetas,
+        "Listar_stock": Listar_stock
+    }
+    return render (request, "Stock_Camionetas.html", context=context)
