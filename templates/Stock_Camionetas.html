@@ -1,6 +1,9 @@
 {% extends "index.html" %}
 
 {% block index %}
+
+{ID_camio}
+
 {% for Listar_stock in Listar_stock %}
                 {% if Listar_stock.camioneta_ID_Producto == ID_camio %}
                 <div class="card" style="width: 18rem; margin-left: 30px; margin-top:10px">
