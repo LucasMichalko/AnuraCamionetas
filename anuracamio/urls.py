@@ -24,5 +24,5 @@ urlpatterns = [
     path("Create_camionetas/", Create_camionetas),
     path("ABM_camionetas/", ABM_Camionetas),
     path("ABM_Productos/", Create_Objects),
-    path("Stock_Camionetas/<ID_camio>", Stock_Camionetas)
+    path("Stock_Camionetas/<int:ID_camio>", Stock_Camionetas)
 ]

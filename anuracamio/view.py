@@ -4,8 +4,10 @@ from camionetas.models import Camionetas, Objetos_Camionetas
 
 def index (request):
     Listar_camionetas = Camionetas.objects.all
+    Listar_stock = Objetos_Camionetas.objects.all()
     context = {
         "Listar_camionetas":Listar_camionetas,
+        "Listar_stock": Listar_stock
     }
     return render(request, "index.html", context=context)
 
