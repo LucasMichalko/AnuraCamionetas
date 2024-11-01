@@ -2,9 +2,10 @@
 
 {% block index %}
 
-{ID_camio}
+{{Listar_stock.camioneta_ID_Producto}}
 
 {% for Listar_stock in Listar_stock %}
+{{Listar_stock.camioneta_ID_Producto}}
                 {% if Listar_stock.camioneta_ID_Producto == ID_camio %}
                 <div class="card" style="width: 18rem; margin-left: 30px; margin-top:10px">
                     <div class="card-body">
