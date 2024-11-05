@@ -72,3 +72,12 @@ def Stock_Camionetas(request,ID_camio):
         "ID_camio": ID_camio,
     }
     return render (request, "Stock_Camionetas.html", context=context)
+
+def sum_stock (request):
+    Listar_stock = Objetos_Camionetas.objects.all()
+    Listar_camionetas = Camionetas.objects.all()
+
+    context = {
+        "Listar_stock": Listar_stock,
+        "Listar_camionetas":Listar_camionetas,
+    }
