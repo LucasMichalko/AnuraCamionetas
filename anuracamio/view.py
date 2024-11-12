@@ -73,11 +73,22 @@ def Stock_Camionetas(request,ID_camio):
     }
     return render (request, "Stock_Camionetas.html", context=context)
 
-def sum_stock (request):
-    Listar_stock = Objetos_Camionetas.objects.all()
+def update_quantity(request, product_id):
     Listar_camionetas = Camionetas.objects.all()
-
+    Listar_stock = Objetos_Camionetas.objects.all()
     context = {
+        "Listar_camionetas": Listar_camionetas,
         "Listar_stock": Listar_stock,
-        "Listar_camionetas":Listar_camionetas,
     }
+
+    if request.method == 'POST':
+        change = int(request.POST.get('change', 0))
+        productos = Objetos_Camionetas.objects.filter(camioneta_ID_Producto=product_id)
+
+        for producto in productos:
+            producto.cantidad = max(producto.cantidad + change, 0)
+            producto.save()
+
+    return render(request, "Stock_Camionetas.html", context=context)
+
+

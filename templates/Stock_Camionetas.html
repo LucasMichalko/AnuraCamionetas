@@ -8,11 +8,13 @@
                 <div class="card" style="width: 18rem; margin-left: 30px; margin-top: 10px;">
                   <div class="card-body">
                       <h3 class="card-title">{{Listar_stock.name}}</h3>
-                      <div class="d-flex align-items-center justify-content-between">
-                          <a href="#" class="btn btn-secondary">-</a>
-                          <h3 class="card-title">{{Listar_stock.cantidad}}</h3>
-                          <a href="#" class="btn btn-secondary">+</a>
-                      </div>
+                      <form method="POST" action="{% url 'update_quantity' Listar_stock.camioneta_ID_Producto %}">
+                        {% csrf_token %}
+                        <button type="submit" name="change" value="-1" class="btn btn-secondary">-</button>
+                        <h3 class="card-title">{{ Listar_stock.cantidad }}</h3>
+                        <button type="submit" name="change" value="1" class="btn btn-secondary">+</button>
+                    </form>
+                    
                   </div>
               </div>
               
