@@ -74,21 +74,37 @@ def Stock_Camionetas(request,ID_camio):
     return render (request, "Stock_Camionetas.html", context=context)
 
 def update_quantity(request, product_id):
+    # Obtenemos las listas necesarias para el contexto
     Listar_camionetas = Camionetas.objects.all()
     Listar_stock = Objetos_Camionetas.objects.all()
+
     context = {
         "Listar_camionetas": Listar_camionetas,
         "Listar_stock": Listar_stock,
+        "product_id": product_id,
     }
 
     if request.method == 'POST':
+        # Obtenemos el cambio en cantidad (-1 o +1)
         change = int(request.POST.get('change', 0))
+        
+        # También obtenemos el nombre del producto, si está disponible
+        product_name = request.POST.get('product_name', None)
+
+        # Filtramos los productos por ID
         productos = Objetos_Camionetas.objects.filter(camioneta_ID_Producto=product_id)
 
+        # Si también recibimos el nombre del producto, añadimos este filtro
+        if product_name:
+            productos = productos.filter(name=product_name)
+
+        # Iteramos sobre los productos encontrados y actualizamos su cantidad
         for producto in productos:
-            producto.cantidad = max(producto.cantidad + change, 0)
+            producto.cantidad = max(producto.cantidad + change, 0)  # Evitamos cantidades negativas
             producto.save()
 
+    # Renderizamos el template con el contexto actualizado
     return render(request, "Stock_Camionetas.html", context=context)
+
 
 

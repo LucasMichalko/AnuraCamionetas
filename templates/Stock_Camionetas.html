@@ -10,6 +10,9 @@
                       <h3 class="card-title">{{Listar_stock.name}}</h3>
                       <form method="POST" action="{% url 'update_quantity' Listar_stock.camioneta_ID_Producto %}">
                         {% csrf_token %}
+                        <!-- Campo oculto para enviar el nombre del producto -->
+                        <input type="hidden" name="product_name" value="{{ Listar_stock.name }}">
+                        
                         <button type="submit" name="change" value="-1" class="btn btn-secondary">-</button>
                         <h3 class="card-title">{{ Listar_stock.cantidad }}</h3>
                         <button type="submit" name="change" value="1" class="btn btn-secondary">+</button>
