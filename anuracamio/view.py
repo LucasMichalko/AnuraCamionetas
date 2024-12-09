@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from camionetas.models import Camionetas, Objetos_Camionetas
 
 def index (request):
@@ -104,7 +104,7 @@ def update_quantity(request, product_id):
             producto.save()
 
     # Renderizamos el template con el contexto actualizado
-    return render(request, "Stock_Camionetas.html", context=context)
+    return redirect('Stock_Camionetas', ID_camio=product_id)
 
 
 
